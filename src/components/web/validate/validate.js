@@ -1,15 +1,7 @@
-export const validate = values=>{
-    let errors = {};
-    if(!values.userName){
-        errors.userName = 'UserName is required';
-    }
+import * as yup from 'yup';
+export const registerSchema = yup.object({
+    userName : yup.string().required("userName is required").min(3,"must be at least 3 char").max(30,"max is 30 char"),
+    email : yup.string().required("email is required").email(),
+    password : yup.string().required("password is required").min(3,"must be at least 3 char").max(30,"max is 30 char"),
+})
 
-    if(!values.email){
-        errors.email = 'Email is required';
-    }
-
-    if(!values.password){
-        errors.password = 'Password is required';
-    }
-    return errors;
-}
